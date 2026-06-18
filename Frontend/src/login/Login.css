@@ -1,0 +1,357 @@
+
+:root {
+    --blue-deep:   #0a0f6b;
+    --blue-mid:    #1a2bcc;
+    --blue-bright: #2244ff;
+    --blue-neon:   #3a6fff;
+    --white:       #ffffff;
+    --input-bg:    rgba(255,255,255,0.88);
+    --text-light:  rgba(255,255,255,0.65);
+    --accent:      #ffffff;
+}
+
+:root {
+    --blue-deep:   #0a0f6b;
+    --blue-mid:    #1a2bcc;
+    --blue-bright: #2244ff;
+    --blue-neon:   #3a6fff;
+    --white:       #ffffff;
+    --input-bg:    rgba(255,255,255,0.88);
+    --text-light:  rgba(255,255,255,0.65);
+    --accent:      #ffffff;
+}
+
+.page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #737068 0%, #0d1899 45%, #838A8E 100%);
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.blob-1 {
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, #2244ff55 0%, transparent 70%);
+    top: -150px; right: -100px;
+}
+.blob-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, #0d1899aa 0%, transparent 70%);
+    bottom: -100px; left: -80px;
+}
+ 
+    /* ── Large "M" decorative shape ── */
+.deco-m {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(400px, 55vw, 700px);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 3px rgba(255,255,255,0.07);
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+    letter-spacing: -20px;
+}
+ 
+    /* ── NAV ── */
+nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 48px;
+}
+ 
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+.nav-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+ 
+.brand {
+    text-align: right;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+.brand span {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.7);
+}
+ 
+    /* ── HERO LAYOUT ── */
+.hero {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 0 48px 48px;
+    gap: 40px;
+}
+ 
+    /* ── LEFT CONTENT ── */
+.hero-left {
+    margin-left: 70px;
+    max-width: 520px;
+    animation: fadeInUp 0.8s ease both;
+}
+ 
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+ 
+.hero-left h2 {
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 600;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 6px;
+}
+ 
+.hero-left h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5.5vw, 66px);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    margin-bottom: 32px;
+    color: var(--white);
+}
+ 
+    /* ── FORM ── */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    animation: fadeInUp 0.8s 0.2s ease both;
+}
+ 
+.form-field {
+    position: relative;
+}
+.form-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+}
+.form-field input {
+    width: 100%;
+    background: var(--input-bg);
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 11px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-field input:focus {
+    border-color: var(--blue-neon);
+    box-shadow: 0 0 0 3px rgba(58,111,255,0.25);
+}
+.form-field input::placeholder { color: #aaa; }
+ 
+.btn-next {
+    margin-top: 6px;
+    padding: 13px 28px;
+    background: var(--blue-bright);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(34,68,255,0.45);
+}
+.btn-next:hover {
+    background: var(--blue-neon);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(58,111,255,0.55);
+}
+.btn-next:active { transform: translateY(0); }
+ 
+    /* ── DISCLAIMER ── */
+.disclaimer {
+    margin-top: 22px;
+    font-size: 10px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.42);
+    max-width: 400px;
+    animation: fadeInUp 0.8s 0.35s ease both;
+}
+ 
+    /* ── TAGLINE ── */
+.tagline {
+    margin-top: 36px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: 0.05em;
+    color: var(--white);
+    animation: fadeInUp 0.8s 0.45s ease both;
+}
+ 
+    /* ── RIGHT — PHOTO ── */
+.hero-right {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+    min-height: 500px;
+}
+ 
+    /* Circular glow behind photo area */
+.photo-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 50% 80%, rgba(34,68,255,0.35) 0%, transparent 70%);
+    border-radius: 50% 50% 0 0;
+    z-index: 0;
+}
+ 
+    /* Photo placeholder — replace src with real image */
+.hero-photo {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    display: block;
+    border-radius: 12px 12px 0 0;
+    object-fit: cover;
+    filter: brightness(0.85) saturate(0.3) hue-rotate(190deg) contrast(1.1);
+    mix-blend-mode: luminosity;
+}
+ 
+    /* Overlay tint on the photo */
+.photo-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: rgba(10, 25, 180, 0.35);
+    border-radius: 12px 12px 12px 12px;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* ── STARS ANIMATION ── */
+.star {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 4px #ffffff, 0 0 8px rgba(255, 255, 255, 0.8);
+    animation: star-pulse 3s infinite ease-in-out alternate;
+}
+
+@keyframes star-pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+.shooting {
+    position: absolute;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    filter: drop-shadow(0 0 6px #ffffff);
+    transform: rotate(-35deg);
+    transform-origin: left center;
+    animation: shooting-star 4s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes shooting-star {
+    0% {
+        transform: translate(0, 0) rotate(-35deg) scale(0);
+        opacity: 0;
+    }
+    1% {
+        opacity: 1;
+    }
+    8% {
+        transform: translate(-180px, 120px) rotate(-35deg) scale(1);
+        opacity: 1;
+    }
+    15% {
+        transform: translate(-300px, 200px) rotate(-35deg) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-300px, 200px) rotate(-35deg) scale(0);
+        opacity: 0;
+    }
+}
+ 
+    /* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 0 24px 48px;
+        gap: 24px;
+    }
+    .hero-left { max-width: 100%; }
+    .hero-right { min-height: 280px; order: -1; }
+    .deco-m { display: none; }
+}
+
+
+.logo-bus{
+    width: 15px;
+    height: 15px;
+}
+
+.btn-register{
+    font-size: smaller;
+    background: none; 
+    border: none;     
+    padding: 0;       
+    font: inherit;    
+    color: inherit;   
+    cursor: pointer;  
+    text-decoration: underline; 
+}
