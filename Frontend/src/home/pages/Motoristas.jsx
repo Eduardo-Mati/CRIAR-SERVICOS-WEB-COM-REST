@@ -231,7 +231,7 @@ function Motoristas() {
                 <div className="form-group">
                   <label>Categoria *</label>
                   <select value={form.categoria} onChange={(e) => setForm({ ...form, categoria: e.target.value })}>
-                    {['A','B','C','D','E','AB','AC','AD','AE'].map(c => <option key={c}>{c}</option>)}
+                    {['A','B','C','D','E','AB'].map(c => <option key={c}>{c}</option>)}
                   </select>
                 </div>
               </div>
@@ -244,7 +244,6 @@ function Motoristas() {
                 <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
                   <option>Ativo</option>
                   <option>Inativo</option>
-                  <option>De férias</option>
                 </select>
               </div>
               <div className="modal-footer">
@@ -303,7 +302,7 @@ function Motoristas() {
                 <div className="form-group">
                   <label>Categoria *</label>
                   <select value={form.categoria} onChange={(e) => setForm({ ...form, categoria: e.target.value })}>
-                    {['A','B','C','D','E','AB','AC','AD','AE'].map(c => <option key={c}>{c}</option>)}
+                    {['A','B','C','D','E','AB'].map(c => <option key={c}>{c}</option>)}
                   </select>
                 </div>
               </div>
@@ -316,7 +315,6 @@ function Motoristas() {
                 <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
                   <option>Ativo</option>
                   <option>Inativo</option>
-                  <option>De férias</option>
                 </select>
               </div>
               <div className="modal-footer">

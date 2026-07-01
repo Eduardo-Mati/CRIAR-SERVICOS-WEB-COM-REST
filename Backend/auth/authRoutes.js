@@ -28,6 +28,7 @@ router.post("/login", async (req, res) => {
 
 		
 		const user = await userModel.find({ email });
+
 		if (!user || user.length === 0) {
 			return res.status(404).json({ error: "Usuario não encontrado." });
 		}

@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import "./rotas.css";
 
 const STORAGE_KEY = "viagens";
@@ -14,8 +14,37 @@ const emptyForm = {
 
 function Rotas() {
   const [viagens, setViagens] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
-  const [motoristas, ] = useState(() => JSON.parse(localStorage.getItem("motoristas") || "[]"));
-  const [frotas, ] = useState(() => JSON.parse(localStorage.getItem("frotas") || "[]"));
+  const [motoristas, setMotoristas] = useState([]);
+  const [frotas, setFrotas] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const headers = { "Content-Type": "application/json" };
+    if (token) headers["Authorization"] = `Bearer ${token}`;
+
+    const fetchData = async () => {
+      try {
+        const [resDrivers, resFleets] = await Promise.all([
+          fetch("http://localhost:3000/api/drivers", { headers }),
+          fetch("http://localhost:3000/api/fleets", { headers }),
+        ]);
+        if (resDrivers.ok) {
+          const data = await resDrivers.json();
+          setMotoristas(data);
+          localStorage.setItem("motoristas", JSON.stringify(data));
+        }
+        if (resFleets.ok) {
+          const data = await resFleets.json();
+          setFrotas(data);
+          localStorage.setItem("frotas", JSON.stringify(data));
+        }
+      } catch (error) {
+        console.error("Erro ao buscar motoristas/frotas:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   const [modal, setModal] = useState(null);
   const [form, setForm] = useState(emptyForm);
   const [editId, setEditId] = useState(null);
@@ -197,7 +226,7 @@ function Rotas() {
         >
           <option value="">Selecione um motorista</option>
           {motoristas.map((m) => (
-            <option key={m.driverId} value={m.name}>
+            <option key={m.driverId} value={m.nome}>
               {m.nome}
             </option>
           ))}
@@ -236,7 +265,6 @@ function Rotas() {
             <option>Em andamento</option>
             <option>Concluída</option>
             <option>Cancelada</option>
-            <option>Agendada</option>
           </select>
         </div>
       </div>
@@ -386,7 +414,14 @@ function Rotas() {
                         className="row-btn row-edit"
                         onClick={() => {
                           setEditId(v.travelId);
-                          setForm({ ...v });
+                          const motorista = motoristas.find((m) => m.driverId === v.motorista_id);
+                          const frotaObj = frotas.find((f) => f.fleetId === v.veiculo_id);
+                          setForm({ 
+                            ...v,
+                            motorista: motorista ? motorista.nome : "",
+                            veiculo: frotaObj ? frotaObj.placa : "",
+                            data: v.data ? v.data.split("T")[0] : "",
+                          });
                           setModal("edit-form");
                         }}
                         title="Editar"
